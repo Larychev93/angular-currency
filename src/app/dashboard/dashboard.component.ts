@@ -19,6 +19,7 @@ export class DashboardComponent implements OnInit {
     });
   }
   ngOnInit() {
+    console.log('netlify')
     this.fetchData()
     this.connectionService.currencyDataChanged
       .subscribe(
