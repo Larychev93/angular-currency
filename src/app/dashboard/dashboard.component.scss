@@ -1,0 +1,15 @@
+.dashboard {
+  margin-top: 64px;
+  &__timeframes {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    &--item {
+      margin-bottom: 32px;
+      width: 49%;
+    }
+  }
+  &__calculate {
+
+  }
+}

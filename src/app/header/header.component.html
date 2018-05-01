@@ -1,0 +1,14 @@
+<div class="header">
+  <div class="header__brand">
+    <span>Currency</span>
+  </div>
+  <div class="header__user" *ngIf="userService.user.token">
+    <div class="header__user--item">
+      <span>John Doe</span>
+      <img src="assets/images/trooper.jpg" alt="user-avatar">
+    </div>
+    <div class="header__user--item">
+      <button (click)="logout()" class="btn btn-outline-info">Logout</button>
+    </div>
+  </div>
+</div>

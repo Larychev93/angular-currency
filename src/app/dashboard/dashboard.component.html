@@ -1,0 +1,10 @@
+<div class="dashboard container">
+  <div class="row">
+    <div class="col-md-7 dashboard__timeframes">
+      <app-timeframe class="dashboard__timeframes--item" [timeFrameKey]="key" *ngFor="let key of timeframes | keys"></app-timeframe>
+    </div>
+    <div class="col-md-5 dashboard__calculate">
+      <app-agreegate class="dashboard__calculate--agreegate"></app-agreegate>
+    </div>
+  </div>
+</div>

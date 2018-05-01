@@ -1,0 +1,37 @@
+@import '../../scss/variables';
+
+.header {
+  padding: 0 32px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #343a40;
+  &__brand {
+    span {
+      font-family: $montserrat-font;
+      font-size: 24px;
+      font-weight: 500;
+      color: white;
+    }
+  }
+  &__user {
+    display: flex;
+    align-items: center;
+    &--item {
+      img {
+        width: 32px;
+        height: 32px;
+        border-radius: 100%;
+      }
+      span {
+        font-family: $sours-sans-font;
+        font-size: 14px;
+        color: white;
+      }
+      &:last-child {
+        margin-left: 32px;
+      }
+    }
+  }
+}

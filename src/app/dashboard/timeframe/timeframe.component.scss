@@ -1,0 +1,23 @@
+@import '../../../scss/variables';
+.timeframe {
+  display: flex;
+  position: relative;
+  border-radius: 4px;
+  border: 1px solid $stroke-color;
+  box-shadow: 0px 2px 75px 0px rgba(6, 26, 70, 0.17);
+  &__label {
+    position: absolute;
+    top: -13px;
+    border-radius: 4px;
+    padding: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    background: #ababab;
+    color: white;
+    right: -8px;
+    z-index: 10;
+  }
+  &__canvas {
+
+  }
+}

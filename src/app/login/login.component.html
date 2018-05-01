@@ -1,0 +1,30 @@
+<div class="login">
+  <div class="login__window">
+    <form class="login__window--form" (ngSubmit)="login()" #form="ngForm">
+      <div class="login__window--input">
+        <label for="email">Email</label>
+        <input name="email"
+               #email="ngModel"
+               ngModel
+               (input)="validationErros.email=''"
+               required
+               type="email"
+               class="input-default">
+        <p class="login__window--help-block" *ngIf="!email.valid && email.touched && !validationErros.email">Please enter a valid email</p>
+        <p class="login__window--help-block" *ngIf="validationErros.email">{{validationErros.email}}</p>
+      </div>
+      <div class="login__window--input">
+        <label for="password">Password</label>
+        <input name="password"
+               #password="ngModel"
+               ngModel
+               (input)="validationErros.password=''"
+               required
+               type="password" class="input-default">
+        <p class="login__window--help-block" *ngIf="!password.valid && password.touched && !validationErros.password">Please enter a valid password</p>
+        <p class="login__window--help-block" *ngIf="validationErros.password">{{validationErros.password}}</p>
+      </div>
+      <button [disabled]="!form.valid" class="btn btn-primary login__window--submit">Login</button>
+    </form>
+  </div>
+</div>
