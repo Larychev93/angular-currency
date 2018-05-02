@@ -50,11 +50,13 @@ export class AgreegateComponent implements OnInit {
           type: 'scatter',
           name: 'H1',
           showInLegend: true,
+          markerColor: 'red',
           dataPoints: dataPoints['H1']
         },
         {
           type: 'scatter',
           name: 'M15',
+          markerColor: 'blue',
           showInLegend: true,
           dataPoints: dataPoints['M15']
         },
@@ -62,12 +64,14 @@ export class AgreegateComponent implements OnInit {
           type: 'scatter',
           name: 'H4',
           showInLegend: true,
+          markerColor: 'green',
           dataPoints: dataPoints['H4']
         },
         {
           type: 'scatter',
           name: 'D1',
           showInLegend: true,
+          markerColor: 'purple',
           dataPoints: dataPoints['D1']
         }
       ]

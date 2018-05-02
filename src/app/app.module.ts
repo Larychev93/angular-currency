@@ -19,7 +19,7 @@ import { AgreegateComponent } from './dashboard/agreegate/agreegate.component';
 
 const appRoutes: Routes = [
   {path: '', component: LoginComponent},
-  {path: 'dashboard', component: DashboardComponent}
+  {path: 'dashboard', canActivate: [AuthGuard], component: DashboardComponent}
 ]
 
 @NgModule({

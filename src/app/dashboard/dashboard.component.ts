@@ -1,27 +1,34 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ConnectionService} from '../services/connection.service';
-import {IntervalObservable} from 'rxjs/observable/IntervalObservable';
+import * as toastr from 'toastr';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, OnDestroy {
   currencyData = null
   timeframes = {}
-  interval = 300000;
+  period = 300000;
+  intervalFunctiion = null
 
   constructor(private connectionService: ConnectionService) { }
-  fetchData() {
+  fetchData(setToaster) {
+    const date = new Date();
+    const hours = date.getHours();
+    const minutes = date.getMinutes();
+    console.log(`data was updated ${hours} - ${minutes}`)
     this.connectionService.fetchCurrencyData().then(resp => {
       this.currencyData = this.connectionService.getCurrencyData();
       this.timeframes = this.connectionService.getTimeframes();
+      if (setToaster) {
+        toastr.success('Your Data was updated!');
+      }
     });
   }
   ngOnInit() {
-    console.log('try github pages')
-    this.fetchData()
+    this.fetchData(false)
     this.connectionService.currencyDataChanged
       .subscribe(
         (data: object) => {
@@ -29,9 +36,13 @@ export class DashboardComponent implements OnInit {
           this.timeframes = this.connectionService.getTimeframes();
         }
       );
-      setInterval(() => {
-        this.fetchData();
-      }, this.interval);
+      this.intervalFunctiion = setInterval(() => {
+        this.fetchData(true);
+      }, this.period);
   }
-
+  ngOnDestroy() {
+    if (this.intervalFunctiion) {
+      clearInterval(this.intervalFunctiion);
+    }
+  }
 }

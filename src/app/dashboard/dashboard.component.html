@@ -5,6 +5,19 @@
     </div>
     <div class="col-md-5 dashboard__calculate">
       <app-agreegate class="dashboard__calculate--agreegate"></app-agreegate>
+      <div class="dashboard__calculate--pairs-wrap" *ngIf="currencyData">
+
+        <div class="dashboard__calculate--pairs" *ngFor="let item of currencyData.SymbolIndices; let i = index">
+          <div class="grid-item title" *ngIf="!i">Time Frame</div>
+          <div class="grid-item title" *ngIf="!i">Strongest</div>
+          <div class="grid-item title" *ngIf="!i">Weakest</div>
+          <div class="grid-item title" *ngIf="!i">Strong-Weak Pair</div>
+          <div class="grid-item">{{item.TimeFrame}}</div>
+          <div class="grid-item">{{item.Strongest}}</div>
+          <div class="grid-item">{{item.Weakest}}</div>
+          <div class="grid-item">{{item.StrongWeakPair}}</div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
