@@ -21,6 +21,9 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
+    /**
+     * Fake login method by password and email and simple validation
+     */
     this.userService.login(this.loginForm.value.email, this.loginForm.value.password).then(resp => {
       this.router.navigate(['dashboard']);
     }, (err) => {

@@ -16,13 +16,17 @@ export class TimeframeComponent implements OnInit {
   }
 
   ngOnInit() {
+    /**
+     * Get timeframe from service by key, then create dynamic id for init canvasJS
+     * @type {{} & any}
+     */
     this.timeframe = this.connectionService.getTimeframeByKey(this.timeFrameKey);
     this.canvasEl.nativeElement.id = `canvas-${this.timeFrameKey}`
     this.connectionService.currencyDataChanged
       .subscribe(
         (data: object) => {
           this.timeframe = this.connectionService.getTimeframeByKey(this.timeFrameKey);
-          this.initCanvasJs()
+          this.initCanvasJs();
         }
       );
     this.initCanvasJs();

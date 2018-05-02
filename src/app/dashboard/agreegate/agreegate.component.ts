@@ -13,6 +13,10 @@ export class AgreegateComponent implements OnInit {
   constructor(private connectionService: ConnectionService) { }
 
   ngOnInit() {
+    /**
+     * Get timeframes from service, then subscribe for changes to service and init CanvasJs
+     * @type {{} & any}
+     */
     this.timeframes = this.connectionService.getTimeframes();
     this.initCanvasJs()
     this.connectionService.currencyDataChanged

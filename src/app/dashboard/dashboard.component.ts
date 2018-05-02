@@ -14,11 +14,12 @@ export class DashboardComponent implements OnInit, OnDestroy {
   intervalFunctiion = null
 
   constructor(private connectionService: ConnectionService) { }
+
+  /**
+   * Fetching data from service and param to show toaster only after update
+   * @param setToaster
+   */
   fetchData(setToaster) {
-    const date = new Date();
-    const hours = date.getHours();
-    const minutes = date.getMinutes();
-    console.log(`data was updated ${hours} - ${minutes}`)
     this.connectionService.fetchCurrencyData().then(resp => {
       this.currencyData = this.connectionService.getCurrencyData();
       this.timeframes = this.connectionService.getTimeframes();
@@ -36,11 +37,18 @@ export class DashboardComponent implements OnInit, OnDestroy {
           this.timeframes = this.connectionService.getTimeframes();
         }
       );
+     /**
+     * Create interval for fetching data, period equals to 5 minutes
+     * @type {NodeJS.Timer}
+     */
       this.intervalFunctiion = setInterval(() => {
         this.fetchData(true);
       }, this.period);
   }
   ngOnDestroy() {
+    /**
+     * ClearInterval in angular lifehook
+     */
     if (this.intervalFunctiion) {
       clearInterval(this.intervalFunctiion);
     }
