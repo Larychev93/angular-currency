@@ -10,6 +10,7 @@ import {IntervalObservable} from 'rxjs/observable/IntervalObservable';
 export class DashboardComponent implements OnInit {
   currencyData = null
   timeframes = {}
+  interval = 300000;
 
   constructor(private connectionService: ConnectionService) { }
   fetchData() {
@@ -30,14 +31,7 @@ export class DashboardComponent implements OnInit {
       );
       setInterval(() => {
         this.fetchData();
-      }, 60 * 3000);
-    // IntervalObservable.create(2000)
-    //   .subscribe(() => {
-    //     this.currencyData = this.connectionService.fetchCurrencyData()
-    //       .subscribe(data => this.currencyData = data,
-    //         error => console.log(error) // error path
-    //       );
-    //   });
+      }, this.interval);
   }
 
 }

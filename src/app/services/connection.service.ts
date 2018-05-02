@@ -1,5 +1,4 @@
 import {Injectable} from '@angular/core';
-import {timeout} from 'rxjs/operators/timeout';
 import {HttpClient} from '@angular/common/http';
 import {Subject} from 'rxjs/Subject';
 import * as _ from 'lodash';
@@ -52,7 +51,6 @@ export class ConnectionService {
   }
 
   emitCurrencyChanges() {
-    console.log('data changed')
     this.currencyDataChanged.next(this.currencyData);
   }
 
